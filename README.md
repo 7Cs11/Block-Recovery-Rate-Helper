@@ -1,6 +1,6 @@
 # BLOCK-RECOVERY RATE HELPER
 
-This is a simple program that analyzes your Mario & Luigi: Dream Team save file and tells you exactly which blocks you've missed so you can finally achieve a 100% Block-Recovery Rate. To use it, download the .zip file under Releases (no need to download the .xlsx file), extract it, run BRRHelper, point it to your save file, and it will give you images showing exactly where your missing blocks are.
+This is a simple program that analyzes your Mario & Luigi: Dream Team save file and tells you exactly which blocks you've missed so you can finally achieve a 100% Block-Recovery Rate. To use it, download the .zip file under Releases (no need to download the .xlsx file, make sure you download either the Linux or Windows version), extract it, run BRRHelper, point it to your save file, and it will give you images showing exactly where your missing blocks are. The reason the .zip files are so big is because of the pictures of each block it shows.
 
 If you are making a program involving the blocks, such as a save file editor, there is a spreadsheet in Releases listing the byte address and bit value of every block. Unfortunately, there are some formatting errors because I exported from Google Sheets, but it is still usable. Camera blocks are included because I did them before I knew exactly which kinds of blocks contribute to BRR.
 
