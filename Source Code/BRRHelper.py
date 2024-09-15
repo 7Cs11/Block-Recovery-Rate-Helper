@@ -5,7 +5,6 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QTableWidget, QTableWidgetItem, QLabel, QHBoxLayout, QPushButton, QFileDialog, QHeaderView
 from PyQt5.QtGui import QPixmap
 
-
 class MainGUI(QWidget):
     def __init__(self):
         super().__init__()
@@ -24,23 +23,23 @@ class MainGUI(QWidget):
         options = QFileDialog.Options()
         file_path, _ = QFileDialog.getOpenFileName(self, "Select a File")
         if file_path:
-            self.execute_code(file_path)
+            self.analyze_file(file_path)
 
-    def execute_code(self, directory):
+    def analyze_file(self, directory):
         
         collected_block_list = []
 
         with open(directory, 'rb') as file:
+
             ##### Reads the byte and converts it to binary #####
             def process_byte(byte_location):
                 file.seek(byte_location) 
                 byte = file.read(1)
-                byte = bin(byte[0])[2:].zfill(8)  #  0xa5->0b10100101->10100101 
+                byte = bin(byte[0])[2:].zfill(8)
                 return byte
             #####
             
             ##### Pi'illo Blimport #####
-
             PilloBlimp_number_collected = 12
             total_blocks_collected = 681
 
@@ -68,7 +67,6 @@ class MainGUI(QWidget):
                     total_blocks_collected -= 1
 
             #### Pi'illo Castle ####
-                    
             PilloCastle_number_collected = 30
                        
             PilloCastle_list = [
@@ -104,7 +102,6 @@ class MainGUI(QWidget):
                     [0x0BC, 3, "PilloCastle_30"],
                 ];
              
-             
             for block_list in PilloCastle_list:
                 (byte_location, bit, name) = block_list
                 byte = process_byte(byte_location)
@@ -114,7 +111,6 @@ class MainGUI(QWidget):
                     PilloCastle_number_collected -= 1
 
              #### Mushrise Park ####
-         
             MushPark_number_collected = 50
             
             MushPark_list = [
@@ -179,7 +175,6 @@ class MainGUI(QWidget):
                     MushPark_number_collected -= 1
 
             #### Dozing Sands ####
-
             DozSands_number_collected = 61
                        
             DozSands_list = [
@@ -245,8 +240,7 @@ class MainGUI(QWidget):
                     [0x0E0, 1, "DozSands_60"],
                     [0x0E0, 2, "DozSands_61"],
                 ];
-             
-             
+
             for block_list in DozSands_list:
                 (byte_location, bit, name) = block_list
                 byte = process_byte(byte_location)
@@ -256,7 +250,6 @@ class MainGUI(QWidget):
                     DozSands_number_collected -= 1
 
             #### Wakeport ####
-         
             Wakeport_number_collected = 33
                        
             Wakeport_list = [
@@ -295,7 +288,6 @@ class MainGUI(QWidget):
                     [0x177, 0, "Wakeport_33"],
                 ];
              
-             
             for block_list in Wakeport_list:
                 (byte_location, bit, name) = block_list
                 byte = process_byte(byte_location)
@@ -305,7 +297,6 @@ class MainGUI(QWidget):
                     Wakeport_number_collected -= 1
 
             #### Mount Pajamaja ####
-  
             MountPaj_number_collected = 47
              
             MountPaj_list = [
@@ -358,7 +349,6 @@ class MainGUI(QWidget):
                     [0x183, 4, "MountPaj_47"],
                 ];
              
-             
             for block_list in MountPaj_list:
                 (byte_location, bit, name) = block_list
                 byte = process_byte(byte_location)
@@ -367,8 +357,7 @@ class MainGUI(QWidget):
                     total_blocks_collected -= 1
                     MountPaj_number_collected -= 1
 
-          #### Driftwood Shore ####
-         
+            #### Driftwood Shore ####
             DriftShore_number_collected = 30
          
             DriftShore_list = [
@@ -404,7 +393,6 @@ class MainGUI(QWidget):
                     [0x17C, 5, "DriftShore_30"],
                 ];
              
-             
             for block_list in DriftShore_list:
                 (byte_location, bit, name) = block_list
                 byte = process_byte(byte_location)
@@ -413,10 +401,7 @@ class MainGUI(QWidget):
                     total_blocks_collected -= 1
                     DriftShore_number_collected -= 1
 
-            
-
             #### Somnom Woods ####
-
             SomWoods_number_collected = 33
         
             SomWoods_list = [
@@ -455,7 +440,6 @@ class MainGUI(QWidget):
                     [0x1C2, 4, "SomWoods_33"],
                 ];
              
-             
             for block_list in SomWoods_list:
                 (byte_location, bit, name) = block_list
                 byte = process_byte(byte_location)
@@ -465,7 +449,6 @@ class MainGUI(QWidget):
                     SomWoods_number_collected -=1
 
             #### Neo Bowser Castle ####
-
             NBC_number_collected = 59
          
             NBC_list = [
@@ -530,7 +513,6 @@ class MainGUI(QWidget):
                     [0x30F, 0, "NBC_59"],
                 ];
              
-             
             for block_list in NBC_list:
                 (byte_location, bit, name) = block_list
                 byte = process_byte(byte_location)
@@ -540,7 +522,6 @@ class MainGUI(QWidget):
                     NBC_number_collected -= 1
 
             #### Dreamy Pi'illo Castle ####
-         
             D_PilloCastle_number_collected = 52
      
             D_PilloCastle_list = [
@@ -597,8 +578,7 @@ class MainGUI(QWidget):
                     [0x0D2, 4, "D_PilloCastle_51"],
                     [0x0CF, 7, "D_PilloCastle_52"],
                 ];
-             
-             
+
             for block_list in D_PilloCastle_list:
                 (byte_location, bit, name) = block_list
                 byte = process_byte(byte_location)
@@ -618,13 +598,11 @@ class MainGUI(QWidget):
                     if any(name.endswith(f"{i}") for i in range(26, 53)):
                         location = "Second Blue Pi'illo Dream World in Pi'illo Castle Underground"
 
-              
                     collected_block_list.append([name, "D_PilloCastle", location])
                     total_blocks_collected -= 1
                     D_PilloCastle_number_collected -= 1
 
             #### Dreamy Mushrise Park ####
-         
             D_MushPark_number_collected = 21
      
             D_MushPark_list = [
@@ -651,7 +629,6 @@ class MainGUI(QWidget):
                     [0x0CA, 0, "D_MushPark_21"],
                 ];
              
-             
             for block_list in D_MushPark_list:
                 (byte_location, bit, name) = block_list
                 byte = process_byte(byte_location)
@@ -667,8 +644,8 @@ class MainGUI(QWidget):
                     D_MushPark_number_collected -= 1
 
             #### Dreamy Dozing Sands ####
-
             D_DozSands_number_collected = 26
+
             D_DozSands_list = [
                     [0x0EB, 1, "D_DozSands_1"],
                     [0x0EB, 2, "D_DozSands_2"],
@@ -736,10 +713,7 @@ class MainGUI(QWidget):
                     total_blocks_collected -= 1
                     D_DozSands_number_collected -= 1
 
-            
-
             #### Dreamy Wakeport ####
-
             D_Wakeport_number_collected = 42
             D_Wakeport_list = [
                     [0x103, 0, "D_Wakeport_1"],
@@ -785,8 +759,7 @@ class MainGUI(QWidget):
                     [0x116, 2, "D_Wakeport_41"],
                     [0x117, 2, "D_Wakeport_42"],
                 ];
-             
-             
+        
             for block_list in D_Wakeport_list:
                 (byte_location, bit, name) = block_list
                 byte = process_byte(byte_location)
@@ -811,7 +784,6 @@ class MainGUI(QWidget):
                     D_Wakeport_number_collected -= 1
                 
             #### Dreamy Mount Pajamaja ####
-    
             D_MountPaj_number_collected = 61
 
             D_MountPaj_list = [
@@ -877,8 +849,7 @@ class MainGUI(QWidget):
                     [0x133, 2, "D_MountPaj_60"],
                     [0x133, 5, "D_MountPaj_61"],
                 ];
-             
-             
+ 
             for block_list in D_MountPaj_list:
                 (byte_location, bit, name) = block_list
                 byte = process_byte(byte_location)
@@ -912,7 +883,6 @@ class MainGUI(QWidget):
                     D_MountPaj_number_collected -= 1
 
             #### Dreamy Driftwood Shore ####
-   
             D_DriftShore_number_collected = 30
              
             D_DriftShore_list = [
@@ -947,8 +917,7 @@ class MainGUI(QWidget):
                     [0x165, 7, "D_DriftShore_29"],
                     [0x165, 6, "D_DriftShore_30"],
                 ];
-             
-             
+
             for block_list in D_DriftShore_list:
                 (byte_location, bit, name) = block_list
                 byte = process_byte(byte_location)
@@ -973,7 +942,6 @@ class MainGUI(QWidget):
                     D_DriftShore_number_collected -= 1
 
             #### Dreamy Somnom Woods ####
-
             D_SomWoods_number_collected = 51
 
             D_SomWoods_list = [
@@ -1030,7 +998,6 @@ class MainGUI(QWidget):
                     [0x1BD, 4, "D_SomWoods_51"],
                 ];
              
-             
             for block_list in D_SomWoods_list:
                 (byte_location, bit, name) = block_list
                 byte = process_byte(byte_location)
@@ -1072,9 +1039,7 @@ class MainGUI(QWidget):
                     total_blocks_collected -= 1
                     D_SomWoods_number_collected -= 1
 
-
             #### Dreamy Neo Bowser Castle ####
-         
             D_NBC_number_collected = 43
             
             D_NBC_list = [
@@ -1123,7 +1088,6 @@ class MainGUI(QWidget):
                     [0x1D6, 0, "D_NBC_43"],
                 ];
              
-             
             for block_list in D_NBC_list:
                 (byte_location, bit, name) = block_list
                 byte = process_byte(byte_location)
@@ -1154,8 +1118,8 @@ class MainGUI(QWidget):
                     total_blocks_collected -= 1
                     D_NBC_number_collected -= 1
 
-            stats_list = [
 
+            stats_list = [
                 total_blocks_collected, PilloBlimp_number_collected, 
                 PilloCastle_number_collected, D_PilloCastle_number_collected,
                 MushPark_number_collected, D_MushPark_number_collected, 
@@ -1165,12 +1129,10 @@ class MainGUI(QWidget):
                 DriftShore_number_collected, D_DriftShore_number_collected, 
                 SomWoods_number_collected, D_SomWoods_number_collected, 
                 NBC_number_collected, D_NBC_number_collected
-
             ];
-            
 
-            self.simple_table_app = SimpleTableApp(collected_block_list, stats_list)
-            self.simple_table_app.show()
+            self.table = Table(collected_block_list, stats_list)
+            self.table.show()
 
             # Close the current GUI
             self.close()
@@ -1178,23 +1140,21 @@ class MainGUI(QWidget):
 
             
        
-class SimpleTableApp(QWidget):
+class Table(QWidget):
     def __init__(self, collected_block_list, stats_list):
 
         collected_block_rows = 0
-        ###############################
         for i in collected_block_list:
             collected_block_rows += 1
-        ##############################
         
         # Creates table layout, two spreadsheets horizontally
         super().__init__()
         self.setWindowTitle("Block-Recovery Rate Helper")
-        self.setGeometry(100, 100, 2400, 1600)  # Set window size
-
+        self.setGeometry(100, 100, 2400, 1600)
         self.layout = QHBoxLayout()
         self.left_table = QTableWidget()
         self.right_table = QTableWidget()
+        #########
 
         #Creating and formatting the left and right tables
         self.layout.addWidget(self.left_table)
@@ -1215,6 +1175,7 @@ class SimpleTableApp(QWidget):
         self.left_table.setColumnWidth(2, 760)
 
         self.populate_left_table(collected_block_list)
+        #########
 
         # Right Table
         self.right_table.setHorizontalHeaderLabels(["Block-Recovery", "Rate Statistics"])
@@ -1233,13 +1194,12 @@ class SimpleTableApp(QWidget):
 
     def populate_left_table(self, collected_block_list):
         current_row = 0
-        ###############################################################
         for block in collected_block_list:
             (name, program_identifier, location) = block
 
             self.left_table.setRowHeight(current_row, 320)
-            self.left_table.setItem(current_row, 0, QTableWidgetItem(name))  # Name
-            self.left_table.setItem(current_row, 1, QTableWidgetItem(location))  # Location
+            self.left_table.setItem(current_row, 0, QTableWidgetItem(name))
+            self.left_table.setItem(current_row, 1, QTableWidgetItem(location))
 
             ######## Image shenanigans
             # Get image
@@ -1253,7 +1213,7 @@ class SimpleTableApp(QWidget):
             label.setFixedSize(720, 240)  # Set a fixed size for the label
             label.setScaledContents(True)  # Scale the image to fit the label
 
-            # Just some code that makes it so that the image is centered vertically within its cell.
+            # Centers image vertically within its cell
             hbox = QHBoxLayout()
             hbox.addWidget(label)
             vbox = QVBoxLayout()
@@ -1267,7 +1227,6 @@ class SimpleTableApp(QWidget):
             ########
 
             current_row += 1
-        ###############################################################
 
     def populate_right_table(self, stats_list):
         
@@ -1314,7 +1273,6 @@ class SimpleTableApp(QWidget):
         
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = MainGUI()  # Create an instance of MainGUI
+    window = MainGUI()
     window.show()
     sys.exit(app.exec_())
-
