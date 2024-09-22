@@ -4,7 +4,7 @@ This is a simple program that analyzes your Mario & Luigi: Dream Team save file 
 
 If you are making a program involving the blocks, such as a save file editor, there is a spreadsheet in Releases listing the byte address and bit value of every block. Unfortunately, there are some formatting errors because I exported from Google Sheets, but it is still usable. Camera blocks are included because I did them before I knew exactly which kinds of blocks contribute to BRR.
 
-Have any questions, or the program says you collected all 681 blocks even though you know for a fact you didn't? Contact me on Discord: 7Cs_
+Have any questions, or the program says you collected all 681 blocks even though you know for a fact you didn't? Contact me on Discord or on Reddit: 7Cs_ or u/7Cs_11
 
 Credit to the Super Mario Wiki for images of block locations:
 - [List of real world blocks in Mario & Luigi: Dream Team](https://www.mariowiki.com/List_of_real_world_blocks_in_Mario_%26_Luigi:_Dream_Team)
